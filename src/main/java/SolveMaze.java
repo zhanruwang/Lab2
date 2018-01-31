@@ -1,5 +1,7 @@
 import edu.illinois.cs.cs125.lib.mazemaker.Maze;
 
+import java.awt.*;
+
 /**
  * Solve a randomly-generated maze.
  *
@@ -35,6 +37,16 @@ public class SolveMaze {
          */
         for (int step = 0; step < 1000; step++) {
             // Implement your maze solving algorithm here
+            maze.turnRight();
+            while (maze.canMove() == false) {
+                maze.turnLeft();
+            }
+            maze.move();
+            maze.move();
+            if (maze.isFinished() == true) {
+                System.out.println(step);
+                break;
+            }
         }
 
         if (maze.isFinished()) {
